@@ -1,0 +1,70 @@
+{% include 'user_header.html' %}
+<center>
+	<br><br>
+<form method="post">
+	<h2>Basic Details</h2>
+	<table border="3" class="table" style="width: 700px;color: black">
+		<tr>
+			<th>Disease</th>
+			<td><input type="text" value="{{data['name']}}" readonly  required  class="form-control"></td>
+			</tr>
+	
+		<tr>
+		<th>Age</th>
+		<td><input type="number"  required name="age" class="form-control"></td>
+		</tr>
+
+		<tr>
+			<td align="center" colspan="5"><input id="btn" type="submit" name="submit" value="Submit" class="btn btn-success"></td>
+		</tr>
+	</table>
+
+	<table border="3" class="table" style="width: 700px;color: black">
+		<tr>
+			<th>Index</th>
+			<th>Disease</th>
+			<th>Age</th>
+			<th>Medicine</th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['disease']}}</td>
+			<td>{{i['p_age']}}</td>
+			<td>{{i['out']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+
+<script src="https://code.jquery.com/jquery-3.6.3.slim.js" integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
+
+<script >
+
+
+	 var select = document.getElementById("select")
+	 var btn = document.getElementById("btn")
+
+	 if (select.value == 0){
+
+	 	btn.disabled=true
+
+	 }else{
+	 	btn.disabled=false
+	 }
+	console.log(select)
+
+	function showbtn(){
+
+		if (select.value == 0){
+
+	 	btn.disabled=true
+
+	 }else{
+	 	btn.disabled=false
+	 
+}
+	}
+</script>
+{% include 'footer.html' %}
